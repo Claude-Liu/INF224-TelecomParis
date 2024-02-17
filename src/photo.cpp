@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include "MultiMedia.h"
 #include "photo.h"
 using namespace std;
 
