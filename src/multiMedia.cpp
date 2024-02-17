@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "MultiMedia.h"
+#include "multiMedia.h"
 using namespace std;
 
 string MultiMedia::getName() const{

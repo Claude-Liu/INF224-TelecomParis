@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include "MultiMedia.h"
+#include "multiMedia.h"
 using namespace std;
 
 class Photo: public MultiMedia{
