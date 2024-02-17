@@ -75,10 +75,9 @@ int Socket::setLocalAddress(SOCKADDR_IN& addr, int port) {
   addr = {};
   addr.sin_family = AF_INET;
   addr.sin_port = htons(port);
-  addr.sin_addr.s_addr = htonl(INADDR_ANY);
+  addr.sin_addr.s_addr = htonl(INADDR_ANY);  
   return 0;
 }
-
 
 // for INET4 sockets
 int Socket::setAddress(SOCKADDR_IN& addr, const string& host, int port) {
