@@ -34,7 +34,7 @@ void Photo::play() const{
 string Photo::getInfo() const{
     string info="";
     info+=MultiMedia::getInfo();
-    info+="Latitude: "+to_string(latitude)+"\n";
-    info+="Longitude: "+to_string(longitude);
+    info+="Latitude: "+to_string(latitude)+" ; ";
+    info+="Longitude: "+to_string(longitude) + " ; ";
     return info;
 }

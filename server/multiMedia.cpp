@@ -17,7 +17,7 @@ void MultiMedia::setPathName(string pathName){
 }
 
 string MultiMedia::getInfo() const{
-    return "Name: " + this->name + "\nPath: " + this->pathName;
+    return "Name: " + this->name +" ; " + "Path: " + this->pathName + " ; ";
 }
 
 MultiMedia::~MultiMedia(){

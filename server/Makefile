@@ -42,7 +42,7 @@ LDFLAGS =
 # Librairies a utiliser
 # Exemple: LDLIBS = -L/usr/local/qt/lib -lqt
 #
-LDLIBS = 
+LDLIBS = -lws2_32
 
 
 ##########################################
@@ -57,8 +57,8 @@ run: ${PROG}
 	./${PROG}
 
 # New target to run with an argument
-run_q10: ${PROG}
-	./${PROG} 10
+run_q11: ${PROG}
+	./${PROG} 11
 
 ${PROG}: depend-${PROG} ${OBJETS}
 	${CXX} -o $@ ${CXXFLAGS} ${LDFLAGS} ${OBJETS} ${LDLIBS}

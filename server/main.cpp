@@ -81,7 +81,8 @@ int main(int argc, const char* argv[])
         all_dolomites->push_back(dolomites_figure_1);
         all_dolomites->push_back(dolomites_figure_2);
         all_dolomites->push_back(dolomites_figure_3);
-        all_dolomites->print(cout);
+        string info = all_dolomites->getInfo();
+        cout << info << endl;
         delete all_dolomites;
 
     }
@@ -109,21 +110,33 @@ int main(int argc, const char* argv[])
     question 11: server object
     */
     if (arg==11){
-        Controler multimediaControler;
+        shared_ptr<Controler> controler(new Controler());
+        shared_ptr<Photo> poster = controler->createPhoto("poster", "../figures/poster.jpg", 1.0, 10.0);
+        shared_ptr<Photo> dolomites_figure_1 = controler->createPhoto("dolomites_1", "../figures/dolomites_1.jpg", 1.0, 10.0);
+        shared_ptr<Photo> dolomites_figure_2 = controler->createPhoto("dolomites_2", "../figures/dolomites_2.jpg", 1.0, 10.0);
+        shared_ptr<Group> all_figures = controler->createGroup("all_figures");
+        all_figures->push_back(poster);
+        all_figures->push_back(dolomites_figure_1);
+        all_figures->push_back(dolomites_figure_2);
+        shared_ptr<Video> dolomites_0 = controler->createVideo("dolomites", "../figures/dolomites.mp4", 2.5);
+        shared_ptr<Film> dolomites_film = controler->createFilm("dolomites_film", "../figures/dolomites.mp4", 2.5, 3, shared_ptr<int>(new int[3]{1, 2, 3}));
         auto* server=new TCPServer([&](string const& request,string& response) {
             response = "";
             cout << "Received request: " << request << endl;
             // Requests: SEARCH, PLAY, CREATE, DELETE
-            if (request[0]=='S') {
+            size_t pos = request.find(' ');
+            string command = request.substr(0, pos);
+            if (command == "SEARCH") {
                 string name=request.substr(7);
                 cout<<name<<endl;
-                response = multimediaControler.search(name);
+                response = controler->search(name);
             }
-            else if (request[0]=='P') {
+            else if (command == "PLAY") {
                 string name=request.substr(5);
-                response = multimediaControler.play(name);
+                response = controler->play(name);
             }
-            else if (request[0]=='C') {
+            else if (command == "CREATE") {
+                // CREATE PHOTO name pathname latitude longitude
                 if (request[7]=='P') {
                     int pos = 13, lstpos = 13;
                     while (request[pos] != ' ') pos++;
@@ -136,9 +149,10 @@ int main(int argc, const char* argv[])
                     int latitude = stoi(request.substr(lstpos, pos-lstpos));
                     pos += 1; lstpos = pos;
                     int longitude = stoi(request.substr(lstpos));
-                    multimediaControler.createPhoto(name, pathname, latitude, longitude);
+                    controler->createPhoto(name, pathname, latitude, longitude);
                     response = "Photo created";
                 }
+                // create video name pathname duration
                 else if (request[7]=='V') {
                     int pos = 13, lstpos = 13;
                     while (request[pos] != ' ') pos++;
@@ -148,13 +162,13 @@ int main(int argc, const char* argv[])
                     string pathname = request.substr(lstpos, pos-lstpos);
                     pos += 1; lstpos = pos;
                     int duration = stoi(request.substr(lstpos));
-                    multimediaControler.createVideo(name, pathname, duration);
+                    controler->createVideo(name, pathname, duration);
                     response = "Video created";
                 }
             }
             else if (request[0]=='D') {
                 string name=request.substr(7);
-                response = multimediaControler.remove(name);
+                response = controler->remove(name);
             }
             return true;
         });

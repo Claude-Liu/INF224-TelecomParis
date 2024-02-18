@@ -39,10 +39,10 @@ void Group::print(ostream& stream) const{
 
 string Group::getInfo() const{
     string info = "";
-    info += "Group name: " + this->name + "\n";
+    info += "Group name: " + this->name + " ; ";
     for (auto it = this->begin(); it != this->end(); it++){
         MultiMedia* multiMediaPtr = (*it).get();
-        info += multiMediaPtr->getInfo() + "\n";
+        info += multiMediaPtr->getInfo() + " ; ";
     }
     return info;
 }

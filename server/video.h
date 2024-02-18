@@ -34,7 +34,7 @@ class Video: public MultiMedia{
         virtual string getInfo() const override{
             string info="";
             info+=MultiMedia::getInfo();
-            info+="Duration: "+to_string(duration);
+            info+="Duration: "+to_string(duration) + " ; ";
             return info;
         };
         virtual void play() const{
