@@ -6,7 +6,7 @@
 
 #include <csignal>
 #include <iostream>
-#include "mingw.thread.h"
+#include <thread>
 #include "tcpserver.h"
 using namespace std;
 

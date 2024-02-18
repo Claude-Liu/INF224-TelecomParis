@@ -61,7 +61,7 @@ run_q11: ${PROG}
 	./${PROG} 11
 
 ${PROG}: depend-${PROG} ${OBJETS}
-	${CXX} -o $@ ${CXXFLAGS} ${LDFLAGS} ${OBJETS} ${LDLIBS}
+	${CXX} -o $@ ${CXXFLAGS} ${LDFLAGS} ${OBJETS} 
 
 clean:
 	-@$(RM) *.o depend-${PROG} core 1>/dev/null 2>&1

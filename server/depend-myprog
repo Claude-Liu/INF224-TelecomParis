@@ -1,3 +1,9 @@
-MultiMedia.o: MultiMedia.cpp MultiMedia.h
-Photo.o: Photo.cpp MultiMedia.h Photo.h
-main.o: main.cpp MultiMedia.h Photo.h Video.h
+multiMedia.o: multiMedia.cpp multiMedia.h
+photo.o: photo.cpp photo.h multiMedia.h
+main.o: main.cpp multiMedia.h photo.h video.h film.h group.h controler.h \
+ tcpserver.h ccsocket.h
+film.o: film.cpp film.h video.h multiMedia.h
+group.o: group.cpp group.h multiMedia.h photo.h video.h
+controler.o: controler.cpp controler.h film.h video.h multiMedia.h \
+ group.h photo.h
+ccsocket.o: ccsocket.cpp ccsocket.h

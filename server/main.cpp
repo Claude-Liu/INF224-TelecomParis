@@ -18,7 +18,11 @@ const int PORT = 3331;
 int main(int argc, const char* argv[])
 {
     std::cout << "Hello brave new world" << std::endl;
-    int arg = stoi(argv[1]);
+    int arg = 11;
+    if (argc==2){
+        arg = stoi(argv[1]);
+    }
+    
 
     /*
     question 4 and 5: treat the two objects as a list of multimedia pointers using polymorphism
