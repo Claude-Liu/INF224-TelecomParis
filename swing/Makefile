@@ -9,12 +9,12 @@
 #
 # Nom du programme (doit correspondre au fichier qui contient main())
 #
-PROG = gui.Main
+PROG = swing.Main
 
 #
 # Fichiers sources .java
 #
-SOURCES = Client.java MainFrame.java Main.java ClientAction.java PlayAction.java SearchAction.java SubmitAction.java
+SOURCES = src/swing/Client.java src/swing/MainFrame.java src/swing/Main.java src/swing/ClientAction.java src/swing/PlayAction.java src/swing/SearchAction.java src/swing/SubmitAction.java
 
 #
 # Compilateur Java
@@ -29,7 +29,7 @@ JFLAGS = -g
 #
 # Repertoire des .class
 #
-BIN_DIR = ../bin
+BIN_DIR = ./bin
 
 #
 # Commande pour effacer des fichiers

@@ -1,4 +1,4 @@
-package gui;
+package swing;
 
 import javax.swing.AbstractAction;
 import javax.swing.JTextArea;
