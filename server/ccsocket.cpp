@@ -8,14 +8,9 @@
 #include <cstdlib>
 #if defined(_WIN32) || defined(_WIN64)
 
-#ifdef _WIN32_WINNT
-#undef _WIN32_WINNT
-#endif
-#define _WIN32_WINNT 0x0600
-
 #include <winsock2.h> //
 #include <ws2tcpip.h>
-//#pragma comment(lib, "ws2_32.lib")
+#pragma comment(lib, "ws2_32.lib")
 
 #else
 #include <unistd.h>      // fcntl.h  won't compile without unistd.h !

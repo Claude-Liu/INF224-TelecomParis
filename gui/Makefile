@@ -29,7 +29,7 @@ JFLAGS = -g
 #
 # Repertoire des .class
 #
-BIN_DIR = ..\bin
+BIN_DIR = ../bin
 
 #
 # Commande pour effacer des fichiers
