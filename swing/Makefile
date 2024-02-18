@@ -50,7 +50,7 @@ classes: $(SOURCES)
 	$(JC) $(JFLAGS) -cp $(BIN_DIR) -d $(BIN_DIR) $(SOURCES)
 
 clean:
-	$(RM) $(BIN_DIR)/*.class
+	$(RM) $(BIN_DIR)
   
 tar:
 	tar cvf ${PROG}.tar.gz ${SOURCES}
